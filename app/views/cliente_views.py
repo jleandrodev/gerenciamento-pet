@@ -7,6 +7,9 @@ from ..services import cliente_service, endereco_service
 
 
 # Create your views here.
+def listar_clientes(request):
+    clientes = cliente_service.listar_clientes()
+    return render(request, 'clientes/lista_clientes.html', {'clientes': clientes})
 
 def cadastrar_cliente(request):
     if request.method == 'POST':
@@ -27,6 +30,7 @@ def cadastrar_cliente(request):
                 cliente_novo = cliente.Cliente(nome=nome, email=email, cpf=cpf, data_nascimento=data_nascimento, 
                                                profissao=profissao, endereco=endereco_db)
                 cliente_service.cadastrar_cliente(cliente_novo)
+                return redirect('lista_clientes')
     else:
         form_cliente = ClienteForm(request.POST)
         form_endereco = EnderecoForm(request.POST)
