@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     'django_adminlte',
     'django_adminlte_theme',
     'app',
+    'localflavor',
 
 ]
 
