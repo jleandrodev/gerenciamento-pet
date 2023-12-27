@@ -16,3 +16,25 @@ class Cliente(models.Model):
     data_nascimento = models.DateField(null=False, blank=False)
     profissao = models.CharField(max_length=30, null=False, blank=False)
 
+class Pet(models.Model):
+    CATEGORIA_PET_CHOICES = (
+        ('ca', 'Cachorro'),
+        ('ga', 'Gato'),
+        ('co', 'Coelho'),
+        ('ta', 'Tartaruga'),
+        ('pa', 'Pássaro'),
+    )
+
+    COR_PET_CHOICES = (
+        ('pr', 'Preto'),
+        ('br', 'Branco'),
+        ('ci', 'Cinza'),
+        ('ma', 'Marrom'),
+    )
+
+    nome = models.CharField(max_length=50, null=False, blank=False)
+    nascimento = models.DateField(null=False, blank=False)
+    categoria = models.CharField(max_length=2, choices=CATEGORIA_PET_CHOICES, null=False, blank=False)
+    cor = models.CharField(max_length=2, choices=COR_PET_CHOICES, null=False, blank=False)
+    dono = models.ForeignKey(Cliente, on_delete=models.CASCADE, null=False, blank=False)
+

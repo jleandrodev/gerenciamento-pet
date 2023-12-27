@@ -1,0 +1,49 @@
+{% extends 'base.html' %}
+{% load filters %}
+
+{% block title %}
+Cadastro de Pet
+{% endblock title %}
+
+{% block content %}
+<div class="box box-primary">
+    <div class="box-header with-border">
+        <h3 class="box-title">Cadastro de Pet</h3>
+    </div>
+    <div class="box-body">
+        <form method="post">
+            {% csrf_token %}
+            <div class="form-group">
+                <label>Nome: </label>
+                {{form_pet.nome|addclass:'form-control'}}
+                {{ form_pet.nome.errors }}
+            </div>
+            <div class="form-group">
+                <label>Data de Nascimento: </label>
+                {{form_pet.nascimento|addclass:'form-control'}}
+                {{ form_pet.nascimento.errors }}
+            </div>
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label>Categoria: </label>
+                        {{form_pet.categoria|addclass:'form-control'}}
+                        {{ form_pet.categoria.errors }}
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label>Cor: </label>
+                        {{form_pet.cor|addclass:'form-control'}}
+                        {{ form_pet.cor.errors }}
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+                <input type="submit" class="btn btn-primary" name="Cadastrar">
+            </div>
+        </form>
+    </div>
+</div>
+
+{% endblock content %}
