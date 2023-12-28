@@ -16,5 +16,6 @@ urlpatterns = [
     path('funcionarios', funcionario_views.listar_funcionarios, name='lista_funcionarios'),
     path('cadastrar-funcionario', funcionario_views.cadastrar_funcionario, name='cadastrar_funcionario'),
     path('login', autenticacao_views.login_usuario, name='login'),
-    path('logout', autenticacao_views.deslogar_usuario, name='logout')
+    path('logout', autenticacao_views.deslogar_usuario, name='logout'),
+    path('enviar-consulta/<int:id>', consulta_views.enviar_email_consulta, name='enviar_consulta')
 ]

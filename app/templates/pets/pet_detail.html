@@ -60,7 +60,7 @@ Detalhes de {{pet.nome}}
                                 <div class="timeline-item">
                                     <span class="time"><i class="fa fa-calendar"></i> {{consulta.data}}</span>
                                     <h3 class="timeline-header">
-                                        <a href="#">
+                                        <a href="{% url 'consulta_detail' consulta.id %}">
                                             {{consulta.pet.nome}} realizou uma nova consulta 
                                         </a>
                                     </h3>

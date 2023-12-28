@@ -3,6 +3,10 @@ from ..forms import consulta_forms
 from ..entidades import consulta
 from ..services import consulta_service, pet_service
 from django.contrib.auth.decorators import login_required, user_passes_test
+from django.template.loader import render_to_string
+from django.core.mail import send_mail
+
+from gerenciamento_pet import settings
 
 @login_required()
 def listar_consulta_id(request, id):
@@ -29,6 +33,21 @@ def cadastrar_consulta(request, id):
     else:
         form_consulta = consulta_forms.ConsultaPetForm()
         return render(request, 'consultas/form_consulta.html', {'form_consulta': form_consulta})
+    
+
+@login_required()
+def enviar_email_consulta(request, id):
+    consulta = consulta_service.listar_consulta_id(id)
+    pet_consulta = pet_service.listar_pet_id(consulta.pet.id)
+    assunto = f'Resumo da consulta de {consulta.pet.nome}'
+
+    html_conteudo = render_to_string('consultas/consulta_email.html', {'consulta': consulta})
+    corpo_email = 'Resumo da consulta'
+    email_remetente = settings.EMAIL_HOST_USER
+    email_destino = [pet_consulta.dono.email, ]
+    send_mail(assunto, corpo_email, email_remetente, email_destino, html_message=html_conteudo)
+
+    return redirect('consulta_detail', id)
     
 
         
