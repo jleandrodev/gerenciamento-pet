@@ -38,3 +38,13 @@ class Pet(models.Model):
     cor = models.CharField(max_length=2, choices=COR_PET_CHOICES, null=False, blank=False)
     dono = models.ForeignKey(Cliente, on_delete=models.CASCADE, null=False, blank=False)
 
+
+class ConsultaPet(models.Model):
+    pet = models.ForeignKey(Pet, on_delete=models.CASCADE, null=False, blank=False)
+    data = models.DateField(null=False, blank=False, auto_now_add=True)
+    motivo = models.CharField(max_length=200, null=False, blank=False)
+    peso_atual = models.FloatField(null=False, blank=False)
+    medicamento_atual = models.TextField(null=False, blank=True)
+    receita = models.TextField(null=False, blank=True)
+    exames = models.TextField(null=False, blank=True)
+

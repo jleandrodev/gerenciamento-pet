@@ -8,6 +8,10 @@ def cadastrar_pet(pet):
 def listar_pets():
     return Pet.objects.all()
 
+def listar_pet_dono(id):
+    pets = Pet.objects.filter(dono=id).all()
+    return pets
+
 def editar_pet(pet, pet_novo):
     pet.nome = pet_novo.nome
     pet.nascimento = pet_novo.nascimento

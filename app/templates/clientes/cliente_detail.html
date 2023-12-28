@@ -23,24 +23,26 @@ Detalhes de {{cliente.nome}}
                             <b>CPF</b> <a class="pull-right">{{ cliente.cpf }}</a>
                         </li>
                     </ul>
+                    <a href="{% url 'cadastrar_pet' cliente.id %}" class="btn btn-primary btn-block">Cadastrar Pet</a>
                 </div>
 
             </div>
-
-
-            <div class="box box-primary">
+            <div class="box box-primary margin-t-5">
                 <div class="box-header with-border">
                     <h3 class="box-title">Pets</h3>
                 </div>
-
-                <div class="box-body">
-                    <strong><i class="fa fa-book margin-r-5"></i> Education</strong>
-                    <p class="text-muted">
-                        B.S. in Computer Science from the University of Tennessee at Knoxville
-                    </p>
-                </div>
-
-            </div>
+                {% for pet in pets %}
+                    <a href="{% url 'pet_detail' pet.id %}">
+                        <div class="box-body">
+                            <strong><i class="fa fa-paw margin-r-5"></i> {{pet.nome}}</strong>
+                            <p class="text-muted">
+                                {{ pet.get_categoria_display }} - {{ pet.get_cor_display }}
+                            </p>
+                        </div>
+                    </a>
+                    <hr>
+                {% endfor %}                    
+             </div>
 
         </div>
 

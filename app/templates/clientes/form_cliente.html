@@ -16,44 +16,36 @@ Cadastro de clientes
             <div class="form-group">
                 <label>Nome: </label>
                 {{form_cliente.nome|addclass:'form-control'}}
-                {{ form_cliente.nome.errors }}
             </div>
             <div class="form-group">
                 <label>Email: </label>
                 {{form_cliente.email|addclass:'form-control'}}
-                {{ form_cliente.email.errors }}
             </div>
             <div class="form-group">
                 <label>CPF: </label>
                 {{form_cliente.cpf|addclass:'form-control'}}
-                {{ form_cliente.cpf.errors }}
             </div>
             <div class="form-group">
                 <label>Data de Nascimento: </label>
                 {{form_cliente.data_nascimento|addclass:'form-control'}}
-                {{ form_cliente.data_nascimento.errors }}
             </div>
             <div class="form-group">
                 <label>Profissão: </label>
                 {{form_cliente.profissao|addclass:'form-control'}}
-                {{ form_cliente.profissao.errors }}
             </div>
             <hr>
             <h4>Endereço</h4>
             <div class="form-group">
                 <label>Rua: </label>
                 {{form_endereco.rua|addclass:'form-control'}}
-                {{ form_endereco.rua.errors }}
             </div>
             <div class="form-group">
                 <label>Cidade: </label>
                 {{form_endereco.cidade|addclass:'form-control'}}
-                {{ form_endereco.cidade.errors }}
             </div>
             <div class="form-group">
                 <label>Estado: </label>
                 {{form_endereco.estado|addclass:'form-control'}}
-                {{ form_endereco.estado.errors }}
             </div>
             <div class="form-group">
                 <input type="submit" class="btn btn-primary" name="Cadastrar">

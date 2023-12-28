@@ -1,5 +1,5 @@
 from django.urls import path
-from .views import cliente_views, pet_views
+from .views import cliente_views, pet_views, consulta_views
 
 urlpatterns = [
     path('cadastrar-cliente', cliente_views.cadastrar_cliente, name='cadastrar_cliente'),
@@ -10,5 +10,6 @@ urlpatterns = [
     path('cadastrar-pet/<int:id>', pet_views.cadastrar_pet, name='cadastrar_pet' ),
     path('pets', pet_views.listar_pets, name='lista_pets'),
     path('pets/<int:id>', pet_views.listar_pet_id, name='pet_detail'),
-    path('editar-pet/<int:id>', pet_views.editar_pet, name='editar_pet')
+    path('editar-pet/<int:id>', pet_views.editar_pet, name='editar_pet'),
+    path('cadastrar-consulta/<int:id>', consulta_views.cadastrar_consulta, name='cadastrar_consulta')
 ]

@@ -26,6 +26,7 @@ Detalhes de {{pet.nome}}
                             <b>Dono</b> <a href="{% url 'cliente_detail' pet.dono.id %}" class="pull-right">{{ pet.dono.nome }}</a>
                         </li>
                     </ul>
+                    <a href="{% url 'cadastrar_consulta' pet.id %}" class="btn btn-primary btn-block">Cadastrar Consulta</a>
                 </div>
 
             </div>
@@ -45,20 +46,26 @@ Detalhes de {{pet.nome}}
 
                             <li class="time-label">
                                 <span class="bg-red">
-                                    10 Feb. 2014
+                                    {% now 'SHORT_DATE_FORMAT' %}
                                 </span>
                             </li>
 
-
+                            {% for consulta in consultas %}
                             <li>
-                                <i class="fa fa-user bg-aqua"></i>
+                                <i class="fa fa-paw bg-aqua"></i>
                                 <div class="timeline-item">
-                                    <span class="time"><i class="fa fa-clock-o"></i> 5 mins ago</span>
-                                    <h3 class="timeline-header no-border"><a href="#">Sarah Young</a> accepted your
-                                        friend request
+                                    <span class="time"><i class="fa fa-calendar"></i> {{consulta.data}}</span>
+                                    <h3 class="timeline-header">
+                                        <a href="#">
+                                            {{consulta.pet.nome}} realizou uma nova consulta 
+                                        </a>
                                     </h3>
+                                    <div class="timeline-body">
+                                        Motivo da Consulta: {{consulta.motivo}}
+                                    </div>
                                 </div>
                             </li>
+                            {% endfor %}
 
                             <li>
                                 <i class="fa fa-clock-o bg-gray"></i>

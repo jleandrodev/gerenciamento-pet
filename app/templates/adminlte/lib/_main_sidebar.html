@@ -1,0 +1,16 @@
+{% extends 'adminlte/lib/_main_sidebar.html' %}
+
+{% block logo %}
+<a href="/" class="logo">
+    <span class="logo-mini"><b>On</b>ly</span>
+    <span class="logo-lg"><b>Only</b>Admin</span>
+</a>
+{% endblock logo %}
+
+{% block nav_links %}
+    <li>
+        <a href="{% url 'lista_clientes' %}">
+            <i class="fa fa-user"></i><span>Clientes</span>
+        </a>
+    </li>
+{% endblock nav_links %}
