@@ -3,7 +3,7 @@ from ..models import Cliente
 from ..forms.cliente_forms import ClienteForm
 from ..forms.endereco_forms import EnderecoForm
 from ..entidades import cliente, endereco_cliente
-from ..services import cliente_service, endereco_service, pet_service
+from ..services import cliente_service, endereco_service, pet_service, consulta_service
 
 
 # Create your views here.
@@ -14,7 +14,8 @@ def listar_clientes(request):
 def listar_cliente_id(request, id):
     cliente = cliente_service.listar_cliente_id(id)
     pets = pet_service.listar_pet_dono(id)
-    return render(request, 'clientes/cliente_detail.html', {'cliente': cliente, 'pets': pets})
+    consultas = consulta_service.listar_consultas_dono(id)
+    return render(request, 'clientes/cliente_detail.html', {'cliente': cliente, 'pets': pets, 'consultas': consultas})
 
 def remover_cliente(request, id):
     cliente = cliente_service.listar_cliente_id(id)

@@ -3,6 +3,10 @@ from ..forms import consulta_forms
 from ..entidades import consulta
 from ..services import consulta_service, pet_service
 
+def listar_consulta_id(request, id):
+    consulta = consulta_service.listar_consulta_id(id)
+    return render(request, 'consultas/consulta_detail.html', {'consulta': consulta})
+
 def cadastrar_consulta(request, id):
     if request.method =='POST':
         form_consulta = consulta_forms.ConsultaPetForm(request.POST)
