@@ -4,19 +4,23 @@ from ..forms.cliente_forms import ClienteForm
 from ..forms.endereco_forms import EnderecoForm
 from ..entidades import cliente, endereco_cliente
 from ..services import cliente_service, endereco_service, pet_service, consulta_service
+from django.contrib.auth.decorators import login_required
 
 
 # Create your views here.
+@login_required()
 def listar_clientes(request):
     clientes = cliente_service.listar_clientes()
     return render(request, 'clientes/lista_clientes.html', {'clientes': clientes})
 
+@login_required()
 def listar_cliente_id(request, id):
     cliente = cliente_service.listar_cliente_id(id)
     pets = pet_service.listar_pet_dono(id)
     consultas = consulta_service.listar_consultas_dono(id)
     return render(request, 'clientes/cliente_detail.html', {'cliente': cliente, 'pets': pets, 'consultas': consultas})
 
+@login_required()
 def remover_cliente(request, id):
     cliente = cliente_service.listar_cliente_id(id)
     endereco = endereco_service.listar_endereco_id(cliente.endereco.id)
@@ -26,6 +30,7 @@ def remover_cliente(request, id):
         return redirect('lista_clientes')
     return render(request, 'clientes/remover_cliente.html', {'cliente': cliente})
 
+@login_required()
 def editar_cliente(request, id):
     cliente_editar = cliente_service.listar_cliente_id(id)
     cliente_editar.data_nascimento = cliente_editar.data_nascimento.strftime('%Y-%m-%d') 
@@ -54,7 +59,7 @@ def editar_cliente(request, id):
 
 
     
-
+@login_required()
 def cadastrar_cliente(request):
     if request.method == 'POST':
         form_cliente = ClienteForm(request.POST)

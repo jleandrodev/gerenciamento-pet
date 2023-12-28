@@ -26,7 +26,11 @@ Detalhes de {{pet.nome}}
                             <b>Dono</b> <a href="{% url 'cliente_detail' pet.dono.id %}" class="pull-right">{{ pet.dono.nome }}</a>
                         </li>
                     </ul>
-                    <a href="{% url 'cadastrar_consulta' pet.id %}" class="btn btn-primary btn-block">Cadastrar Consulta</a>
+                    {% if user.cargo == '1' %}
+                    <a href="{% url 'cadastrar_consulta' pet.id %}" class="btn btn-primary btn-block">
+                        Cadastrar Consulta
+                    </a>
+                    {% endif %}
                 </div>
 
             </div>

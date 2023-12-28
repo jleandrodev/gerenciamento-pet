@@ -16,6 +16,7 @@ Lista de Funcionarios
                     <th>Nome</th>
                     <th>Data de Nascimento</th>
                     <th>Cargo</th>
+                    <th>Username</th>
                     <th>Ações</th>
                 </tr>
             </thead>
@@ -25,6 +26,7 @@ Lista de Funcionarios
                         <td><a href="#">{{ funcionario.nome }}</a></td>
                         <td>{{ funcionario.nascimento }}</td>
                         <td>{{ funcionario.get_cargo_display }}</td>
+                        <td>{{ funcionario.username }}</td>
                         <td>
                             <a href="#" class="btn btn-primary">Editar</a>
                             <a href="#" class="btn btn-danger">Remover</a>
