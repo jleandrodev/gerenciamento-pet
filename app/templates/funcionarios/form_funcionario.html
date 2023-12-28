@@ -1,0 +1,38 @@
+{% extends 'base.html' %}
+{% load filters %}
+
+{% block title %}
+Cadastro de Funcionario
+{% endblock title %}
+
+{% block content %}
+<div class="box box-primary">
+    <div class="box-header with-border">
+        <h3 class="box-title">Cadastro de Funcionario</h3>
+    </div>
+    <div class="box-body">
+        <form method="post">
+            {% csrf_token %}
+            <div class="form-group">
+                <label>Nome: </label>
+                {{form_funcionario.nome|addclass:'form-control'}}
+                {{ form_funcionario.nome.errors }}
+            </div>
+            <div class="form-group">
+                <label>Data de Nascimento: </label>
+                {{form_funcionario.nascimento|addclass:'form-control'}}
+                {{ form_funcionario.nascimento.errors }}
+            </div>
+            <div class="form-group">
+                <label>Cargo: </label>
+                {{form_funcionario.cargo|addclass:'form-control'}}
+                {{ form_funcionario.cargo.errors }}
+            </div>
+            <div class="form-group">
+                <input type="submit" class="btn btn-primary" name="Cadastrar">
+            </div>
+        </form>
+    </div>
+</div>
+
+{% endblock content %}
